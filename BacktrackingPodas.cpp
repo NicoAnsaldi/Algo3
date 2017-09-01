@@ -60,12 +60,12 @@ int backtracking(vector <pair <int, int> >* encuestas, vector <int> ConjAgentes,
 
 void Confiable(vector <pair <int, int> >* Encuestas, vector<int> ConjAgentes, int i, int agentes){
 	if(i <= agentes){
+		if(((ConjAgentes.size()+(agentes - i)) < res)){
+				return;
+		}
 		if((VerConfiabilidad(Encuestas, &ConjAgentes, i))){ //VerConfiabilidad agrega a i al conjAgente si es confiable
 			int a = i;
 			a++;
-			if(((ConjAgentes.size()+(agentes - i)) < res)){
-				return;
-			}
 			backtracking(Encuestas, ConjAgentes, a, agentes);
 		}else{
 			NoConfiable(Encuestas, ConjAgentes, i, agentes);
@@ -76,6 +76,9 @@ void Confiable(vector <pair <int, int> >* Encuestas, vector<int> ConjAgentes, in
 
 void NoConfiable(vector <pair <int, int> >* Encuestas, vector<int> ConjAgentes, int i, int agentes){
 	if(i <= agentes){
+		if(((ConjAgentes.size()+(agentes - i)) < res)){
+			return;
+		}
 		int a = i;
 		a++;
 		backtracking(Encuestas, ConjAgentes, a, agentes);
@@ -120,6 +123,7 @@ bool VerConfiabilidad(vector <pair <int, int> >* Encuestas, vector <int>* ConjAg
 bool aux(vector<pair <int, int> >* Encuestas, vector<int> ConjAgentes, pair<int,int> Ei){
 	int n = 0;
 	bool guarda = true;
+	//veo que puedo agregar a la Ei.second al conjunto
 	if(Ei.first == (Ei.second *(-1))){ //No confia de si mismo
 		return false;
 	}
@@ -130,7 +134,7 @@ bool aux(vector<pair <int, int> >* Encuestas, vector<int> ConjAgentes, pair<int,
 				guarda = guarda && (Ei.second == (*Encuestas)[n].first);
 			}
 			if(modulo((*Encuestas)[n].second, Ei.second)){ //Caso que no matchea la encuesta de alguien en el conj con la encuesta de Ei
-				guarda = guarda && (Ei.second == (*Encuestas)[n].second);
+				guarda = guarda && (Ei.second == (*Encuestas)[n].second); //Segunda poda
 			}
 		}
 		n++;

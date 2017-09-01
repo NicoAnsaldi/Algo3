@@ -126,9 +126,6 @@ bool aux(vector<pair <int, int> >* Encuestas, vector<int> ConjAgentes, pair<int,
 			if(modulo((*Encuestas)[n].first, Ei.second)){
 				guarda = guarda && (Ei.second == (*Encuestas)[n].first);
 			}
-			if(modulo((*Encuestas)[n].second, Ei.second)){ //Caso que no matchea la encuesta de alguien en el conj con la encuesta de Ei
-				guarda = guarda && (Ei.second == (*Encuestas)[n].second);
-			}
 		}
 		n++;
 	}
