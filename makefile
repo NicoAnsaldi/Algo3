@@ -1,5 +1,7 @@
 make: 
-	g++ -g -o codigo Codigo.cpp
+	g++ -g -o backtracking Backtracking.cpp
+	g++ -g -o backtrackingPodas BacktrackingPodas.cpp
 	
 clean:
-	rm codigo
+	rm backtrackingPodas
+	rm backtracking
