@@ -1,6 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <cmath>
+#include <chrono>
+#include <ctime>
+#include <ratio>
+#include <numeric>
+using namespace std::chrono;
 
 using namespace std;
 
@@ -34,8 +40,12 @@ int main(){
 				Encuestas.push_back(pair <int,int>(a,b));
 				cantEncuestas--;
 			}
+				high_resolution_clock::time_point t1 = high_resolution_clock::now();
 				backtracking(&Encuestas, ConjAgentes, 1, agentes);
-				cout << res << endl;
+				high_resolution_clock::time_point t2 = high_resolution_clock::now();
+				duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
+				cout << time_span.count()<<endl;
+				//cout << res << endl;
 				res = 0;
 				//cout << res << endl;
 		}else{
