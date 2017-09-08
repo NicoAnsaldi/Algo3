@@ -2,7 +2,7 @@ import random
 
 #random.seed(50)
 encuestas = random.randint(1, 30) #encuestas
-for agente in range(1,26): #agentes
+for agente in range(1,24): #agentes
 	for muestras in range(0,100): #muestras
 		encuestas = random.randint(1, 31) #encuestas
 		print '{0:d} {1:d}'.format(agente,encuestas) #agentes y #encuestas
