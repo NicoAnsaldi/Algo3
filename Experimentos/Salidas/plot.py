@@ -27,9 +27,9 @@ nada = [None]
 #print salidaRandom
 #plt.legend(["Caso Random"])
 
-salidaPositiva = bloques(datos("SalidaPodasPositivas.txt"),100)
-salidaNegativa = bloques(datos("SalidaPodasNegativas.txt"), 100)
-salidaRandom = bloques(datos("SalidaPodasRandom.txt"), 100)
+salidaPositiva = bloques(datos("SalidaPositivaPodas"),100)
+salidaNegativa = bloques(datos("SalidaNegativaPodas"), 100)
+salidaRandom = bloques(datos("SalidaRandomPodas"), 100)
 #salidaPositivaPodas = bloques(datos("1salidaPositiva"),100)
 #salidaPositivaSinpodas = bloques(datos("salidapositivassinpodas"),100)
 
@@ -51,9 +51,9 @@ plt.legend( ['salida Positiva', 'salida Negativa', 'salida Random'], loc = 'uppe
 #plt.legend(["Caso Random"])
 plt.grid(True)
 plt.grid(color = '0.5', linestyle = '--', linewidth = 1)
-plt.axis('tight')
+#plt.axis('tight')
 #plt.axis([0, 20, 0, 5])
 plt.xlabel(r"Cantidad de Agentes", fontsize = 24, color = 'black')
 plt.ylabel(r"Tiempo en Segundos", fontsize = 24, color = 'black')
-plt.title('Backtracking (sin podas)',fontsize = 28, color = 'black', verticalalignment = 'baseline', horizontalalignment = 'center')
+plt.title('Backtracking (con podas)',fontsize = 28, color = 'black', verticalalignment = 'baseline', horizontalalignment = 'center')
 plt.show()
