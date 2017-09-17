@@ -5,3 +5,9 @@ make:
 clean:
 	rm backtrackingPodas
 	rm backtracking
+
+test:
+	./backtracking < input > Test/BacktrackingTest
+	./backtracking < test1.in 
+	./backtrackingPodas < input > Test/BacktrackingPodasTest
+	./backtrackingPodas < test1.in
