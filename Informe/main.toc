@@ -12,3 +12,4 @@
 \contentsline {subsection}{\numberline {2.3}Complejidad}{5}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Experimentaci\IeC {\'o}n}{5}{subsection.2.4}
 \contentsline {section}{\numberline {3}Comparaci\IeC {\'o}n}{6}{section.3}
+\contentsline {section}{\numberline {4}Modificaciones al informe}{7}{section.4}
