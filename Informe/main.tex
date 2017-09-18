@@ -1,0 +1,74 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[paper=a4paper, hmargin=1.5cm, bottom=1.5cm, top=3.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{xspace}
+\usepackage{xargs}
+\usepackage{ifthen}
+\usepackage{caratula}
+\usepackage{changepage}
+\usepackage{qtree}
+\usepackage{algorithmicx, algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\graphicspath{ {images/} }
+
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage[utf8]{inputenc}
+
+\hypersetup{%
+ % Para que el PDF se abra a página completa.
+ pdfstartview= {FitH \hypercalcbp{\paperheight-\topmargin-1in-\headheight}},
+ pdfauthor={Nicolás Ansaldi},
+ pdfkeywords={},
+ pdftitle={Algoritmos y Estructuras de Datos III – TP1},
+ pdfsubject={TP1}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PARAMETROS A SER MODIFICADOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%cuatrimestre de acuerdo a la opcion
+\newcommand{\Cuatrimestre}{$2^\mathrm{er}$ cuatrimestre de 2017}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% OTRAS OPCIONES QUE NO HAY QUE MODIFICAR
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Acomodo fancyhdr.
+\pagestyle{fancy}
+\thispagestyle{fancy}
+\lhead{Algoritmos y Estructuras de Datos III}
+\rhead{\Cuatrimestre}
+\cfoot{\thepage /\pageref{LastPage}}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{13pt}
+
+
+\begin{document}
+
+\input{caratula.tex}
+
+\tableofcontents
+
+\newpage
+
+\input{Backtracking.tex}
+
+\newpage 
+
+\input{BacktrackingPodas.tex}
+
+\newpage
+
+\input{vs.tex}
+
+\newpage
+
+\input{DiferenciasInforme.tex}
+
+\end{document}
