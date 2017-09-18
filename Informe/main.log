@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.24)  17 SEP 2017 17:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.24)  18 SEP 2017 08:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -932,32 +932,33 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 43.
+ [3]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 52.
- [3]
+
 <BacktrackingLog.png, id=109, 586.8324pt x 406.1574pt>
 File: BacktrackingLog.png Graphic file (type png)
 
 <use BacktrackingLog.png>
-Package pdftex.def Info: BacktrackingLog.png used on input line 84.
+Package pdftex.def Info: BacktrackingLog.png used on input line 85.
 (pdftex.def)             Requested size: 264.07213pt x 182.76913pt.
 
-Overfull \hbox (7.99731pt too wide) in paragraph at lines 84--85
+Overfull \hbox (7.99731pt too wide) in paragraph at lines 85--86
 [][] 
  []
 
 <Backtracking.png, id=111, 586.8324pt x 406.1574pt>
 File: Backtracking.png Graphic file (type png)
  <use Backtracking.png>
-Package pdftex.def Info: Backtracking.png used on input line 87.
+Package pdftex.def Info: Backtracking.png used on input line 88.
 (pdftex.def)             Requested size: 264.07213pt x 182.76913pt.
 
-Overfull \hbox (7.99731pt too wide) in paragraph at lines 87--88
+Overfull \hbox (7.99731pt too wide) in paragraph at lines 88--89
 [][] 
  []
 
 
-Overfull \hbox (2.22168pt too wide) in paragraph at lines 83--89
+Overfull \hbox (2.22168pt too wide) in paragraph at lines 84--90
 []$[]$ $[]$ 
  []
 
@@ -1021,40 +1022,33 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 74.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 74.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 60408DB33D116F8211A1DBA60FC6C2F6;958.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 74.
  ) 
 Here is how much of TeX's memory you used:
- 9316 strings out of 493029
- 135916 string characters out of 6136234
- 248540 words of memory out of 5000000
- 12655 multiletter control sequences out of 15000+600000
+ 9313 strings out of 493029
+ 135873 string characters out of 6136234
+ 246540 words of memory out of 5000000
+ 12653 multiletter control sequences out of 15000+600000
  11247 words of font info for 26 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  59i,13n,94p,1260b,478s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{page.8} has been referenced but does not exist, r
-eplaced by a fixed one
-
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000
-.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/tex
-mf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/publi
-c/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1000.
-pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texm
-f/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public
-/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.p
-fb>
-Output written on main.pdf (7 pages, 493522 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx10
+00.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/t
+exmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/pub
+lic/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc100
+0.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/te
+xmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/publ
+ic/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000
+.pfb>
+Output written on main.pdf (7 pages, 492255 bytes).
 PDF statistics:
- 208 PDF objects out of 1000 (max. 8388607)
- 171 compressed objects within 2 object streams
- 33 named destinations out of 1000 (max. 500000)
+ 207 PDF objects out of 1000 (max. 8388607)
+ 170 compressed objects within 2 object streams
+ 32 named destinations out of 1000 (max. 500000)
  151 words of extra memory for PDF output out of 10000 (max. 10000000)
 

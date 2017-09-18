@@ -33,7 +33,7 @@ res: 3 \\
 
 \subsection{Solución Propuesta}
 
-	La idea para resolver este problema es considerar todos los posibles casos. Para esto vimos que cada agente puede estar como no en el conjunto, o sea, se va a analizar ambos conjuntos resultantes, uno donde el agente esté en el conjunto y otro donde no esté. A la hora de agregar un agente, llamémoslo i, al conjunto primero vemos que se pueda, esto significa que va a seguir siendo un conjunto válido, para esto vamos a ver un par de cosas. La primera es que nadie en el conjunto desconfíe de i, luego veremos que i no desconfíe de nadie que está en el conjunto, también se verifica que la encuesta del agente tenga sentido lógico, o sea, que no desconfíe de si mismo y, como puede hacer más de una declaración, que no desconfie y confie de un agente. Una vez hecho esto, y  para los otros posibles conjuntos válidos, se elegirá el conjunto con mayor cantidad de agentes. 
+	La idea para resolver este problema es considerar todos los posibles casos. Para esto vimos que cada agente puede estar como no en el conjunto, o sea, se va a analizar ambos conjuntos resultantes, uno donde el agente esté en el conjunto y otro donde no esté. A la hora de agregar un agente, llamémoslo i, al conjunto primero vemos que se pueda, esto significa que va a seguir siendo un conjunto válido, para esto vamos a ver un par de cosas. La primera es que nadie en el conjunto desconfíe de i, luego veremos que i no desconfíe de nadie que está en el conjunto, también se verifica que la encuesta del agente tenga sentido lógico, o sea, que no desconfíe de si mismo y, como puede hacer más de una declaración, que no desconfie y confie de un agente. Además para la rama en la cuál no se agrega al agente vereficamos que tenga sentido que no este en el conjunto, esto es que nadie, que este en el conjunto, confie en él. Una vez hecho esto, y  para los otros posibles conjuntos válidos, se elegirá el conjunto con mayor cantidad de agentes. 
 	
 \subsection{Resolución}
 	La técnica de backtracking consiste en pensar conceptualmente en un árbol que contega todas las posibles soluciones. Por esto la solución que propone mi algoritmo es la siguiente:
@@ -57,20 +57,21 @@ res: 3 \\
 \If{longitud(ConjAgentes) > solucion}
 \State solucion $=$ longitud(ConjAgentes)
 \EndIf
-\State\Return solucion
 \EndIf
 \If{PuedoAgregarAgente}
 \State Paso Recursivo rama agregueAlAgente
 \EndIf
+\If{NadieConfiaEnElAgente}
 \State Paso Recursivo rama NoAgregoAlAgente
+\EndIf
 \EndProcedure
 \end{algorithmic}
-
 \end{algorithm}
 
+	A la hora de recorrer ambas ramas, se verifica que no genere instancias inválidas. 
 \subsection{Demostración de correctitud}
 
-	La técnica descripta anteriormente parte de pensar al problema como un árbol con todas las posibles soluciones. Luego al ver que el algoritmo recorre, por cada nodo, las 2 posibles ramas (notar que la rama de agregar solo la recorre si es posible) se puede afirmar que recorre todo el árbol. Entonces supongo que hay alguna solución que resuelve el problema pero que no esta en el árbol. Luego esto es absurdo ya que el árbol es completo ya que recorre todas las posibles combinaciones para formar las soluciones. Entonces por lo dicho anteriormente el algoritmo recorre todas las posibles soluciones y devuelve la mejor.
+	La técnica descripta anteriormente parte de pensar al problema como un árbol con todas las posibles soluciones. Sin embargo si bien el algoritmo 
 
 \subsection{Complejidad teórica}
 	
