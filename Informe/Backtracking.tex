@@ -71,7 +71,7 @@ res: 3 \\
 	A la hora de recorrer ambas ramas, se verifica que no genere instancias inválidas. Lo que hacen las guardas de los ifs es comprobar esa validez.
 \subsection{Demostración de correctitud}
 
-	La técnica descripta anteriormente parte de pensar al problema como un árbol con todas las posibles soluciones. Cada nodo del árbol representa como se va ir modificando nuestro conjunto incluyendo o no a un determinado agente. A pesar de que nuestro algorítmo se basa en esta idea falta decir porque es correcto respecto a nuestro problema ya que como dijimos antes no recorre todos los casos. La razón es que recorre las ramas que son válidas según las condiciones del problema y no considera las inválidas. Una vez que tenemos el conjunto de soluciones posibles se queda con la mejor de ellas, en este paso (cuando ya se recorrió todo el árbol) se prodrían considerar las soluciones descartadas pero serían descartas de nuevo, ya que no cumplen con lo pedido, lo que hacemos es descartalas antes de llegar al final del árbol para ahorrarnos recorrer dichas ramas. Entonces al final generamos todas las posibles soluciones y nos quedamos con la mejor.
+	La técnica descripta anteriormente parte de pensar al problema como un árbol con todas las posibles soluciones. Cada nodo del árbol representa como se va ir modificando nuestro conjunto incluyendo o no a un determinado agente. A pesar de que nuestro algoritmo se basa en esta idea falta decir porque es correcto respecto a nuestro problema ya que como dijimos antes no recorre todos los casos. La razón es que recorre las ramas que son válidas según las condiciones del problema y no considera las inválidas. Una vez que tenemos el conjunto de soluciones posibles se queda con la mejor de ellas, en este paso (cuando ya se recorrió todo el árbol) se podrían considerar las soluciones descartadas pero serían descartas de nuevo, ya que no cumplen con lo pedido, lo que hacemos es descartalas antes de llegar al final del árbol para ahorrarnos recorrer dichas ramas. Entonces al final generamos todas las posibles soluciones y nos quedamos con la mejor.
 
 \subsection{Complejidad teórica}
 	
@@ -79,7 +79,7 @@ res: 3 \\
 	
 \subsection{Experimentación} 
 	
-	Para analizar la performancia del algoritmo decidimos considerar diferentes entradas. Cada entrada consiste en fijar la cantidad de agentes (yendo desde 1 agente hasta 23) y tomar 100 repeticiones para la cantidad fijada. Cada repetición toma una cantidad de encuestas random (yendo desde 1 hasta 31). Entonces, por ejemplo, tenemos 100 repeticiones (cada una con una cantidad aleatoria de encuestas) para un agente, luego 100 repeticiones para 2 agentes y asi sucesivamente. Las entradas que consideramos fueron, una donde todas las encuestas son positivas, una donde todas las encuestas son negativas y por último una donde se elige aleatoriamente si la encuesta es positiva o negativa.       
+	Para analizar la performancia del algoritmo decidimos considerar diferentes entradas. Cada entrada consiste en fijar la cantidad de agentes (yendo desde 1 agente hasta 23) y tomar 100 repeticiones para la cantidad fijada. Cada repetición toma una cantidad de encuestas random (yendo desde 1 hasta 31). Entonces, por ejemplo, tenemos 100 repeticiones (cada una con una cantidad aleatoria de encuestas) para un agente, luego 100 repeticiones para 2 agentes y asi sucesivamente, una vez tomadas todas las muestras se corre el algoritmo utilizandolas y se toma el tiempo que tarda, y una vez que se tienen los tiempos se toma un promedio de las 100 muestras. Las entradas que consideramos fueron, una donde todas las encuestas son positivas, una donde todas las encuestas son negativas y por último una donde se elige aleatoriamente si la encuesta es positiva o negativa.       
 	
 \begin{figure}[h]
 \begin{subfigure}{0.5\textwidth}
@@ -90,8 +90,15 @@ res: 3 \\
 \end{subfigure}
 \end{figure}
 
-	En el gráfico podemos ver que el algoritmo se comporta de una manera similar para las 3 entradas, esto se debe que estamos recorriendo todas las soluciones sin descartar ninguna.
-
+	En el gráfico podemos ver que el algoritmo se comporta de una manera similar para las 3 entradas, esto se debe que estamos recorriendo la mayoría de soluciones, o sea, estamos recorriendo casi todo el árbol. 
 	
+	En un segundo experimento quisimos ver si la cantidad de encuestas influían en el algoritmo, la primera impresión es que si dado que las recorremos para formar el conjunto de agentes y para, una vez completado el conjunto, o sea, recorrido una rama hasta las hojas, las utilizamos para comprobar la validez del conjunto. Para ver esto lo que hicimos fue fijar el número de agentes a 23 e ir aumentando el número de encuestas progresivamente hasta llegar a una relación de 1 a 1 con los agentes. Además con este experimento quisimos ver que pasaba si las 
+	
+\begin{figure}[h]
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale=0.45]{VariacionEncuestas.png}
+\end{subfigure}
+\end{figure}
 
+	Mirando el gráfico se puede ver que la cantidad de encuestas influye en el tiempo del algoritmo.
 
