@@ -4,7 +4,7 @@
 
 \subsection{Resolución}
 	
-	Además de lo dicho en el ejercicio anterior, la idea es podar más el árbol para no recorrer casos donde no nos interese su solución o sea un caso inválido. Para esto tenemos 2 podas, la primera consiste en no considerar conjuntos que no mejoran la respuesta y la segunda consiste en hacer un mejor análisis de la confiabilidad de los agentes. Para la primera consideremos un conjunto con "k" elementos en el, previamente habían "a" agentes mientras que "i" representan los agentes procesados, la poda consiste en que si $k+(a-i)$ <= s, donde s es mi mejor solución hasta el momento, no sigo recorriendo ese rama porque se que no voy a conseguir nada mejor. La otra consiste en hacer un mejor chequeo de la confiabilidad además de lo descripto en el ejercicio anterior, vemos que si el agente a ser agregado confia en otro agente, este último debería formar parte del conjunto por lo que vemos si ya está en el conjunto o si puede ser agregado, para esto vereficamos que no haya nadie que desconfie de este agente, si alguien no confia en él no se agrega al agente al conjunto. 
+	Además de lo dicho en el ejercicio anterior, la idea es podar más el árbol para no recorrer ramas donde no nos interese su solución o sea un caso inválido. Para esto tenemos 2 podas, la primera consiste en no ramas que no mejoren mi mejor solución hasta el momento y la segunda consiste en hacer un análisis a futuro de la confiabilidad de los agentes. Para la primera consideremos un conjunto con "k" elementos en el, "a" representa la cantidad total de agentes e "i" representa los agentes que ya fueron evaluados, la poda consiste en que si $k+(a-i)$ <= s (notar que "a-i" representa los agentes que faltan por evaluar), donde s es la mejor solución hasta el momento, si esto pasa no seguimos recorriendo esa rama ya que no aporta nada mejor a lo que tenemos. La otra consiste en hacer un mejor chequeo de la confiabilidad. Además de lo descripto en el ejercicio anterior, vemos que si el agente a ser agregado, llamemoslo "x", confia en otro agente "y", "y" pueda formar parte del conjunto.  Para esto vereficamos la confiabilidad de "y" si resulta que no podemos agregarlo al conjunto tampoco agregamos a "x" por lo que no recorremos esa posibilidad. 
 	
 \subsection{Pseudocódigo}  
 	
@@ -39,10 +39,10 @@
 \begin{figure}[h]
 
 \begin{subfigure}{0.5\textwidth}
-\includegraphics[scale=0.45]{BacktrackingPodasLog.png}
+\includegraphics[scale=0.45]{PodasLog.png}
 \end{subfigure}
 \begin{subfigure}{0.5\textwidth}
-\includegraphics[scale=0.45]{BacktrackingPodas.png}
+\includegraphics[scale=0.45]{Podas.png}
 \end{subfigure}
 
 \end{figure}

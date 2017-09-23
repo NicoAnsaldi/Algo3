@@ -5,3 +5,13 @@ make:
 clean:
 	rm backtrackingPodas
 	rm backtracking
+
+sinpodas:
+	./backtracking < Muestras/Random > Salidas/SalidaRandom
+	./backtracking < Muestras/Positivas > Salidas/SalidaPositiva
+	./backtracking < Muestras/Negativas > Salidas/SalidaNegativa
+
+podas:
+	./backtrackingPodas < Muestras/Random > Salidas/SalidaPodasRandom
+	./backtrackingPodas < Muestras/Positivas > Salidas/SalidaPodasPositiva
+	./backtrackingPodas < Muestras/Negativas > Salidas/SalidaPodasNegativa
