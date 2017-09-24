@@ -75,11 +75,11 @@ res: 3 \\
 
 \subsection{Complejidad teórica}
 	
-	Como dijimos antes la idea conceptual del problema es pensarlo como un árbol de soluciones. Como este árbol contempla todas las posibles soluciones es un árbol completo, ya que por cada nodo tenemos 2 opciones, que forme parte del conjunto o que no forme (no hace falta considerar cuando alguna rama no es recorridas ya que estamos considerando complejidad en peor caso, por lo que  consideramos el árbol completo). Entonces terminamos teniendo un árbol con $2^{i}$ hojas, donde "i" es la cantidad de agentes. Además para pasar de un nivel del árbol a otro, pagamos O($a^{2}*i$) esto se debe a que vemos las encuestas del agente evaluado y las encuestas de los agentes que ya pertenecen al conjunto y chequeamos que cumplan lo descripto anteriormente. Esto lo hacemos cuando queremos ver si un agente es confiable, para la rama que no es confiable pagamos O($a$) para ver si efectivamente el agente evaluado puede no pertenecer al conjunto, luego nos queda la suma de las complejidades O(($a^{2}*i$) + ($a^{2}*i$)) donde nos quedamos con la más grande. Luego en el último nivel hacemos un chequeo para ver si efectivamente el conjunto es válido, esto se debe a que a la hora de agregar un agente al conjunto no estamos considerando que si éste confía en un agente y ese agente no se encuentra en el conjunto lo pueda agregar en el futuro. Para hacer esto tenemos que recorrer una vez mas el conjunto y ver que siga siendo un conjunto válido. Esto nos toma O($i^{2}a$) pasos. Luego, una vez recorrido todo el árbol, terminamos teniendo una complejidad de O($2^{i}*((i*a^{2})+(i^{2}*a))$) = O($2^{i}*(max(i*a^{2}, i^{2}*a))$).
+	Como dijimos antes la idea conceptual del problema es pensarlo como un árbol de soluciones. Como este árbol contempla todas las posibles soluciones es un árbol completo, ya que por cada nodo tenemos 2 opciones, que forme parte del conjunto o que no forme (no hace falta considerar cuando alguna rama no es recorridas ya que estamos considerando complejidad en peor caso, por lo que  consideramos el árbol completo). Entonces terminamos teniendo un árbol con $2^{i}$ hojas, donde "i" es la cantidad de agentes. Además para pasar de un nivel del árbol a otro, pagamos O($a^{2}*i$) esto se debe a que vemos las encuestas del agente evaluado y las encuestas de los agentes que ya pertenecen al conjunto y chequeamos que cumplan lo descripto anteriormente. Esto lo hacemos cuando queremos ver si un agente es confiable, para la rama que no es confiable pagamos O($a$) para ver si efectivamente el agente evaluado puede no pertenecer al conjunto, luego nos queda la suma de las complejidades O(($a^{2}*i$) + ($a^{2}*i$)) donde nos quedamos con la más grande. Luego en el último nivel hacemos un chequeo para ver si efectivamente el conjunto es válido, esto se debe a que a la hora de agregar un agente al conjunto no estamos considerando que si éste confía en un agente y ese agente no se encuentra en el conjunto lo pueda agregar en el futuro. Para hacer esto tenemos que recorrer una vez mas el conjunto y ver que siga siendo un conjunto válido. Esto nos toma O($i^{2}a$) pasos. Luego, una vez recorrido todo el árbol, terminamos teniendo una complejidad de O($2^{i}*((i*a^{2})+(i^{2}*a))$).
 	
 \subsection{Experimentación} 
 	
-	Para analizar la performancia del algoritmo decidimos considerar diferentes entradas. Cada entrada consiste en fijar la cantidad de agentes (yendo desde 1 agente hasta 23) y tomar 100 repeticiones para la cantidad fijada. Cada repetición toma una cantidad de encuestas random (yendo desde 1 hasta 31). Entonces, por ejemplo, tenemos 100 repeticiones (cada una con una cantidad aleatoria de encuestas) para un agente, luego 100 repeticiones para 2 agentes y asi sucesivamente, una vez tomadas todas las muestras se corre el algoritmo utilizandolas y se toma el tiempo que tarda, y una vez que se tienen los tiempos se toma un promedio de las 100 muestras. Las entradas que consideramos fueron, una donde todas las encuestas son positivas, una donde todas las encuestas son negativas y por último una donde se elige aleatoriamente si la encuesta es positiva o negativa.       
+	Para analizar la performancia del algoritmo decidimos considerar diferentes entradas. Cada entrada consiste en fijar la cantidad de agentes (yendo desde 1 agente hasta 20) y tomar 100 repeticiones para la cantidad fijada. Cada repetición toma una cantidad de encuestas igual a la cantidad de agentes lo que nos queda es una relación 1 a 1, y las encuestas son elegidas de forma aleatoria. Entonces, por ejemplo, tenemos 100 repeticiones para un agente con un encuesta random, luego 100 repeticiones para 2 agentes y asi sucesivamente, una vez tomadas todas las muestras se corre el algoritmo y se toma el tiempo que tarda. Una vez que se tienen los tiempos se toma un promedio de ellos. Las entradas que consideramos fueron, una donde todas las encuestas son positivas, una donde todas las encuestas son negativas y por último una donde se elige aleatoriamente si la encuesta es positiva o negativa.       
 	
 \begin{figure}[h]
 \begin{subfigure}{0.5\textwidth}
@@ -90,7 +90,32 @@ res: 3 \\
 \end{subfigure}
 \end{figure}
 
-	En el gráfico podemos ver que el algoritmo se comporta de una manera similar para las 3 entradas, esto se debe que estamos recorriendo la mayoría de soluciones, o sea, estamos recorriendo casi todo el árbol. 
+	En los gráficos podemos ver que la peor instancia es la postiva, esto se debe a que recorremos todas las ramas donde agregamos un agente al conjunto ya que todas las encuestas son positivas. Lo que no estaríamos recorriendo en esta instancia serían los casos donde queremos ver si podemos no agregar un agente al conjunto, ya que es posible que otro agente en el conjunto confie en él. Pero en general estaríamos recorriendo casi todo el árbol. Para las otras instacias no se ve un diferencia muy grande.
+	
+	Para el segundo experimento lo que hicimos fue fijar el número de agentes a 18 e ir aumentando el número de encuestas hasta llegar a una proporción de 2 a 1. Con esto queríamos ver si a medida que aumentamos las encuestas, estas influyen en el tiempo del algoritmo. Las encuestas fueron elegidas aleatoriamente tanto el voto en si como si es positiva o negativa. El método de medición fue el mismo que utilizamos en la experimentación anterior.
+	 
+	\begin{figure}[h]
+	\begin{subfigure}{0.5\textwidth}
+	\includegraphics[scale=0.45]{VariacionesSinPodas.png}	
+	\end{subfigure}
+	\end{figure} 
+	
+	Lo que sacamos del gráfico es el aumento del tiempo en relación al aumento de las encuestas.
+	\\	
+	
+	\begin{figure}[h]
+	\begin{subfigure}{0.5\textwidth}
+	\includegraphics[scale=0.45]{Pearson.png}	
+	\end{subfigure}
+	\end{figure}  
+	
+	Por último quisimos comparar nuestra función teórica de complejidad con los resultados empíricos de nuestro algoritmo. Para esto utilizamos los resultados de la instancia positiva que, como vimos, es el peor caso para nuestro algoritmo y es lo que más se asemeja a la complejidad en peor caso. Para realizar la comparación utilizamos el coeficiente de Pearson. Este nos dice si dos variables tiene una relación o no. 
+	
+	
+	 
+	
+	En el gráfico podemos ver una relación directa casi perfecta, esto nos dice que los resultados de nuestro algoritmo y de la fución teórica se comportan de manera similiar, esto quiere decir que cuando uno aumenta el otro también lo hace. 
+	 
 	
 
 

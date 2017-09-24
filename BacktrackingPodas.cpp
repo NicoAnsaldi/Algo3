@@ -69,7 +69,6 @@ void Confiable(vector <pair <int, int> >& Encuestas, vector<int> ConjAgentes, in
 			backtracking(Encuestas, ConjAgentes, a, agentes);
 		}else{
 			return;
-			//NoConfiable(Encuestas, ConjAgentes, i, agentes);
 		}
 	}
 	return;

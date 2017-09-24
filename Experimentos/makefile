@@ -18,4 +18,4 @@ podas:
 
 Variacion:
 	./backtracking < Muestras/Variaciones > Salidas/Variaciones
-	./backtrackingPodas < Muestras/Variaciones > Salidas/VariacionesPodas
+	
