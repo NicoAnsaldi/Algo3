@@ -10,14 +10,15 @@ using namespace std::chrono;
 
 using namespace std;
 
-int backtracking(vector <pair <int, int> >*, vector<int>, int, int);
-void Confiable(vector <pair <int, int> >*, vector<int>, int, int);
-void NoConfiable(vector <pair <int, int> >*, vector<int>, int, int);
-bool VerConfiabilidad(vector <pair <int, int> >*, vector<int>*, int);
-bool aux(vector <pair <int, int> >*, vector <int>, pair<int, int>); //Funcion que cheque la el pair matchee en el vector <int>*
+void backtracking(vector <pair <int, int> >&, vector<int>, int, int);
+void Confiable(vector <pair <int, int> >&, vector<int>, int, int);
+void NoConfiable(vector <pair <int, int> >&, vector<int>, int, int);
+bool VerConfiabilidad(vector <pair <int, int> >&, vector<int>*, int);
+bool aux(vector <pair <int, int> >&, vector <int>, pair<int, int>); //Funcion que cheque la el pair matchee en el vector <int>*
 bool EnConj(int, vector<int>); //verifica que el int este en vector<int>
 bool modulo(int, int) ;//Dice si dos numeros son iguales en modulo
-bool ConjValido(vector <int>, vector<pair <int, int> >*); //Chequea que la solucion sea una solucion valida
+bool ConjValido(vector <int>, vector<pair <int, int> >&); //Chequea que la solucion sea una solucion valida
+bool NadieConfia(vector<pair <int, int> >&, vector <int>, int); //Chequea que nadie confie en el agente i
 
 int res = 0; //variable global que guardara el mejor resultado
 
@@ -41,10 +42,10 @@ int main(){
 				cantEncuestas--;
 			}
 				high_resolution_clock::time_point t1 = high_resolution_clock::now();
-				backtracking(&Encuestas, ConjAgentes, 1, agentes);
+				backtracking(Encuestas, ConjAgentes, 1, agentes);
 				high_resolution_clock::time_point t2 = high_resolution_clock::now();
 				duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
-				cout << time_span.count()<<endl;
+				cout << time_span.count() << endl;
 				//cout << res << endl;
 				res = 0;
 				//cout << res << endl;
@@ -55,20 +56,19 @@ int main(){
 	return 0;
 }
 
-int backtracking(vector <pair <int, int> >* encuestas, vector <int> ConjAgentes, int i, int agentes){
+void backtracking(vector <pair <int, int> >& encuestas, vector <int> ConjAgentes, int i, int agentes){
 	if(i > agentes){
 		if(ConjValido(ConjAgentes, encuestas)){
 			if(ConjAgentes.size() > res){
 				res = ConjAgentes.size();
 			}
-		}	
-		return res;
+		}
 	}
 	Confiable(encuestas, ConjAgentes, i, agentes);
 	NoConfiable(encuestas, ConjAgentes, i, agentes);
 }
 
-void Confiable(vector <pair <int, int> >* Encuestas, vector<int> ConjAgentes, int i, int agentes){
+void Confiable(vector <pair <int, int> >& Encuestas, vector<int> ConjAgentes, int i, int agentes){
 	if(i <= agentes){
 		if(((ConjAgentes.size()+(agentes - i)) < res)){
 				return;
@@ -78,14 +78,15 @@ void Confiable(vector <pair <int, int> >* Encuestas, vector<int> ConjAgentes, in
 			a++;
 			backtracking(Encuestas, ConjAgentes, a, agentes);
 		}else{
-			NoConfiable(Encuestas, ConjAgentes, i, agentes);
+			return;
+			//NoConfiable(Encuestas, ConjAgentes, i, agentes);
 		}
 	}
 	return;
 }
 
-void NoConfiable(vector <pair <int, int> >* Encuestas, vector<int> ConjAgentes, int i, int agentes){
-	if(i <= agentes){
+void NoConfiable(vector <pair <int, int> >& Encuestas, vector<int> ConjAgentes, int i, int agentes){
+	if(i <= agentes && NadieConfia(Encuestas, ConjAgentes, i)){
 		if(((ConjAgentes.size()+(agentes - i)) < res)){
 			return;
 		}
@@ -98,20 +99,20 @@ void NoConfiable(vector <pair <int, int> >* Encuestas, vector<int> ConjAgentes, 
 
 
 
-bool VerConfiabilidad(vector <pair <int, int> >* Encuestas, vector <int>* ConjAgentes, int i){
+bool VerConfiabilidad(vector <pair <int, int> >& Encuestas, vector <int>* ConjAgentes, int i){
 	int n = 0;
 	bool guarda = true;
 	vector<int> ResEncuestas;
-	while(n < Encuestas->size()){
-		if((*Encuestas)[n].first == i){
-			int z = (*Encuestas)[n].second;
+	while(n < Encuestas.size()){
+		if(Encuestas[n].first == i){
+			int z = Encuestas[n].second;
 			ResEncuestas.push_back(z);
-			guarda = guarda && aux(Encuestas, *ConjAgentes, (*Encuestas)[n]); //Veo que la encuesta de i matchee con el conjAgente
+			guarda = guarda && aux(Encuestas, *ConjAgentes, Encuestas[n]); //Veo que la encuesta de i matchee con el conjAgente
 		}
-		if(EnConj((*Encuestas)[n].first, *ConjAgentes)){
-			int z = (*Encuestas)[n].second;
+		if(EnConj(Encuestas[n].first, *ConjAgentes)){
+			int z = Encuestas[n].second;
 			if(modulo(z, i)){
-				guarda = guarda && ((*Encuestas)[n].second == i ); //Veo que nadie en el conjunto desconfie de i
+				guarda = guarda && (Encuestas[n].second == i ); //Veo que nadie en el conjunto desconfie de i
 			}	
 		}
 		n++;
@@ -130,30 +131,27 @@ bool VerConfiabilidad(vector <pair <int, int> >* Encuestas, vector <int>* ConjAg
 	return guarda;
 }
 
-bool aux(vector<pair <int, int> >* Encuestas, vector<int> ConjAgentes, pair<int,int> Ei){
+bool aux(vector<pair <int, int> >& Encuestas, vector<int> ConjAgentes, pair<int,int> Ei){
 	int n = 0;
 	bool guarda = true;
 	//veo que puedo agregar a la Ei.second al conjunto
 	if(Ei.first == (Ei.second *(-1))){ //No confia de si mismo
 		return false;
 	}
-	while(n < Encuestas->size()){
-		if(EnConj((*Encuestas)[n].first, ConjAgentes)){
+	while(n < Encuestas.size()){
+		if(EnConj(Encuestas[n].first, ConjAgentes)){
 			//Caso donde Ei desconfia en alguien que ya esta en el conjunto
-			int z = (*Encuestas)[n].first;
+			int z = Encuestas[n].first;
 			if(modulo(z, Ei.second)){
-				guarda = guarda && (Ei.second == (*Encuestas)[n].first);
+				guarda = guarda && (Ei.second == Encuestas[n].first);
 			}
 			if(Ei.second > 0){
-				if(modulo((*Encuestas)[n].second, Ei.second)){ //Caso que no matchea la encuesta de alguien en el conj con la encuesta de Ei
-					guarda = guarda && (Ei.second == (*Encuestas)[n].second); //Segunda poda
+				if(modulo(Encuestas[n].second, Ei.second)){ //Caso que no matchea la encuesta de alguien en el conj con la encuesta de Ei
+					guarda = guarda && (Ei.second == Encuestas[n].second); //Segunda poda
 				}
 			}
 		}
 		n++;
-	}
-	if(Ei.second < 0){
-		guarda = guarda && !(EnConj((Ei.second*(-1)), ConjAgentes));
 	}
 	return guarda;
 }
@@ -175,20 +173,33 @@ bool EnConj(int i, vector<int> ConjAgentes){
 			return true;
 		}
 		n++;
-	}
+	}	
 	return false;
 }
 
-bool ConjValido(vector <int> a, vector<pair <int,int> >* encuestas){
+bool ConjValido(vector <int> a, vector<pair <int,int> >& encuestas){
 	int n = 0;
 	bool guarda = true;
-	while(n < encuestas->size()){
-		if(EnConj((*encuestas)[n].first, a)){ //Chequea que si el agente confia en alguien ese alguien este en el conj y si no confia que no este
-			if((*encuestas)[n].second > 0){
-				guarda = guarda && (EnConj((*encuestas)[n].second, a));
+	while(n < encuestas.size()){
+		if(EnConj(encuestas[n].first, a)){ //Chequea que si el agente confia en alguien ese alguien este en el conj y si no confia que no este
+			if(encuestas[n].second > 0){
+				guarda = guarda && (EnConj(encuestas[n].second, a));
 			}else{
-				guarda = guarda && !(EnConj((*encuestas)[n].second  * (-1), a));
+				guarda = guarda && !(EnConj(encuestas[n].second  * (-1), a));
 			}
+		}
+		n++;
+	}
+	return guarda;
+}
+
+bool NadieConfia(vector <pair <int, int> >& Encuestas, vector <int> ConjAgentes, int i){
+	int n = 0;
+	bool guarda = true;
+	while(n < Encuestas.size()){
+		if(EnConj(Encuestas[n].first, ConjAgentes)){
+			//Veo que nadie confie en i
+			guarda = guarda && (Encuestas[n].second != i);
 		}
 		n++;
 	}

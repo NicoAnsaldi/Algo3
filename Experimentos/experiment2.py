@@ -5,7 +5,7 @@ import random
 #for agente in range(1,24): #agentes
 #for muestras in range(0,100): #muestras
 	#encuestas = random.randint(1, 31) #encuestas
-for encuestas in range(1,50):
+for encuestas in range(1,41):
 	for i in range(0,100):
 		print '{0:d} {1:d}'.format(20,encuestas) #agentes y #encuestas
 		for unaencuesta in range(0,encuestas):

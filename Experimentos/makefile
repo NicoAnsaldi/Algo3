@@ -15,3 +15,7 @@ podas:
 	./backtrackingPodas < Muestras/Random > Salidas/SalidaPodasRandom
 	./backtrackingPodas < Muestras/Positivas > Salidas/SalidaPodasPositiva
 	./backtrackingPodas < Muestras/Negativas > Salidas/SalidaPodasNegativa
+
+Variacion:
+	./backtracking < Muestras/Variaciones > Salidas/Variaciones
+	./backtrackingPodas < Muestras/Variaciones > Salidas/VariacionesPodas

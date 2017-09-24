@@ -26,7 +26,7 @@ def bloques(valores,intervalo):
 
 df = pd.DataFrame()
 
-Teorica = datos("FuncionListo")
+Teorica = datos("SalidaFuncion")
 Experimental = bloques(datos("SalidaPositiva"), 100)
 
 df['Teorica'] = Teorica
