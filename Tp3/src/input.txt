@@ -1,0 +1,4 @@
+1 1 1 1  80 1 1  81 1 1  80 1 1 1  1 1 1 1
+
+
+// diagonalizqarriba, diagonalderarriba, vertical, horizontal, 0,1,2,0,1,2, 0,1,2,3, izq abajo, izq arriba, der arriba, der abajo

@@ -1,0 +1,14 @@
+Nota: el ejercicio 2 se corre con el .cpp que se llama ej3.cpp.
+Utilizamos las salidas y entradas de ofstream e ifstream para no utilizar la estandar de c++.
+
+Como correr genetica:
+Genetica automaticamente compila el ej3 y el champ, solo resta compilar genetica con el makefile, 
+y luego escribir ./genetica, e ira mostrando las generaciones y la cantidad de partidas ganadas, perdidas y empatadas de cada jugador.
+Nota: genetica corre el 4-linea, si se quiere cambiarlo, se tiene que cambiar el genetica.cpp y la cantidad de parametros segun las columnas dadas.
+
+Como correr Grid:
+Usar el make y grid empezará a correr usando el ej3Grid y generara un vector de pesos para un juego de 4 en línea. Al finalizar el vector de pesos estará en InputGrid.txt.
+La razón por la cual hay 2 ej3 es porque el grid nos dio muchos problemas de memoria y usando ej3Grid no tiene esos problemas.
+
+Cualquier cosa que no se entienda o si queres correr los experimentos, estamos a tu disposición.
+Saludos
